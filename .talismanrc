@@ -1,4 +1,6 @@
 fileignoreconfig:
+- filename: docker-compose.yaml
+  checksum: ae925287b5b703a159109d72a898d7c82b22ba122435a2aea9afa90fdae13be7
 - filename: result/package-lock.json
   checksum: 2ad18fc11d7819037f58b6b61f3026d4cd4f86b68c4079f3f57b7095f0c1b982
 - filename: result/views/angular.min.js

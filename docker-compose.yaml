@@ -1,25 +1,29 @@
-redis:
-  image: redis
+version: "3"
+services: 
+  redis:
+    image: redis
 
-postgresdb:
-  image: postgresdb
+  postgresdb:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_PASSWORD=postgres
 
-vote:
-  image: vote
-  ports:
-    - 5000:80
-  links:
-    - redis
+  vote:
+    image: vote
+    ports:
+      - 5000:80
+    depends_on:
+      - redis
 
-result:
-  image: result
-  ports:
-    - 5001:80
-  links:
-    - postgresdb
+  result:
+    image: result
+    ports:
+      - 5001:80
+    depends_on:
+      - postgresdb
 
-worker:
-  image: worker
-  links: 
-    - redis
-    - postgresdb
+  worker:
+    image: worker
+    depends_on:
+      - redis
+      - postgresdb
