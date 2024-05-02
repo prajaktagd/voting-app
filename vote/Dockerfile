@@ -8,7 +8,7 @@ RUN pip3 install flask redis
 
 ENV PATH="/home/myuser/.local/bin:${PATH}"
 
-COPY ./vote .
+COPY . .
 
 EXPOSE 80
 
