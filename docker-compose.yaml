@@ -1,0 +1,25 @@
+redis:
+  image: redis
+
+postgresdb:
+  image: postgresdb
+
+vote:
+  image: vote
+  ports:
+    - 5000:80
+  links:
+    - redis
+
+result:
+  image: result
+  ports:
+    - 5001:80
+  links:
+    - postgresdb
+
+worker:
+  image: worker
+  links: 
+    - redis
+    - postgresdb
