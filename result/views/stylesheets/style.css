@@ -102,6 +102,7 @@ body{
   height:100%;
   width:100%;
   position:absolute;
+  display: flex;
 }
 #background-stats div{
   transition: width 400ms ease-in-out;
