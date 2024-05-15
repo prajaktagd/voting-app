@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: result-app-deployment
+  labels:
+    name: result-app-deployment
+    tier: frontend
+    app: voting-application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: result-app-pod
+      tier: frontend
+      app: voting-application
+  template: 
+    metadata: 
+      name: result-app-pod
+      labels:
+        name: result-app-pod
+        tier: frontend
+        app: voting-application
+    spec:
+      containers:
+        - name: result-app-container
+          image: result-app
+          imagePullPolicy: Never
+          ports: 
+            - containerPort: 80

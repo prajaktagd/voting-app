@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vote-app-deployment
+  labels:
+    name: vote-app-deployment
+    tier: frontend
+    app: voting-application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: vote-app-pod
+      tier: frontend
+      app: voting-application
+  template:
+    metadata: 
+      name: vote-app-pod
+      labels:
+        name: vote-app-pod
+        tier: frontend
+        app: voting-application
+    spec:
+      containers:
+        - name: vote-app-container
+          image: vote-app:latest
+          imagePullPolicy: Never
+          ports: 
+            - containerPort: 80

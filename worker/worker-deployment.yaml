@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-app-deployment
+  labels:
+    name: worker-app-deployment
+    tier: backend
+    app: voting-application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: worker-app-pod
+      tier: backend
+      app: voting-application
+  template:
+    metadata: 
+      name: worker-app-pod
+      labels:
+        name: worker-app-pod
+        tier: backend
+        app: voting-application
+    spec:
+      containers:
+        - name: worker-app-container
+          image: worker-app
+          imagePullPolicy: Never
