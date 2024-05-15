@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: worker-app-pod
+  labels:
+    name: worker-app-pod
+    tier: backend
+    app: voting-application
+spec:
+  containers:
+    - name: worker-app-container
+      image: worker-app
+      imagePullPolicy: Never

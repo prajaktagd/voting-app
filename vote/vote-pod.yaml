@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: vote-app-pod
+  labels:
+    name: vote-app-pod
+    tier: frontend
+    app: voting-application
+spec:
+  containers:
+    - name: vote-app-container
+      image: vote-app:latest
+      imagePullPolicy: Never
+      ports: 
+        - containerPort: 80
